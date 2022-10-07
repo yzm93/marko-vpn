@@ -21,9 +21,8 @@ resource "google_compute_address" "static" {
   name = "ipv4-address"
 }
 
-resource "google_service_account" "default" {
-  account_id   = "service_account_id"
-  display_name = "Service Account"
+data "google_app_engine_default_service_account" "default" {
+
 }
 
 resource "google_compute_instance" "vm_instance" {
@@ -46,8 +45,7 @@ resource "google_compute_instance" "vm_instance" {
 
   service_account {
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-    email  = google_service_account.default.email
-    scopes = ["cloud-platform"]
+    email  = data.google_app_engine_default_service_account.default.email
   }
 
   # metadata_startup_script = file("~/workspace/terraform/vpn/vm_start_script.sh")
