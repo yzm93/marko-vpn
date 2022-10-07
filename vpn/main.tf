@@ -21,6 +21,11 @@ resource "google_compute_address" "static" {
   name = "ipv4-address"
 }
 
+resource "google_service_account" "default" {
+  account_id   = "service_account_id"
+  display_name = "Service Account"
+}
+
 resource "google_compute_instance" "vm_instance" {
   name         = "marko-vpn-instance"
   machine_type = "e2-standard-2"
@@ -39,19 +44,11 @@ resource "google_compute_instance" "vm_instance" {
     }
   }
 
-  metadata_startup_script = file("~/workspace/terraform/vpn/vm_start_script.sh")
-}
-
-resource "google_compute_firewall" "rules" {
-  project     = var.project_id
-  name        = "marko-vpn-instance-firewall-rule"
-  network     = google_compute_network.vpc_network.name
-  description = "Creates firewall rule targeting tagged instances"
-
-  allow {
-    protocol  = "tcp"
-    ports     = ["80", "443"]
+  service_account {
+    # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
+    email  = google_service_account.default.email
+    scopes = ["cloud-platform"]
   }
 
-  target_tags = ["http-server", "https-server"]
+  # metadata_startup_script = file("~/workspace/terraform/vpn/vm_start_script.sh")
 }
