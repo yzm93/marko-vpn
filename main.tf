@@ -3,13 +3,13 @@ terraform {
     google = {
       source  = "hashicorp/google"
       version = "3.5.0"
-      region  = "asia-east2-a"
     }
   }
 }
 
 provider "google" {
   project = var.project_id
+  region  = "asia-east2-a"
 }
 
 resource "google_compute_network" "vpc_network" {
