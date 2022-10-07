@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# install wget
+sudo apt-get install wget
+
 # install terraform 
 sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
 
