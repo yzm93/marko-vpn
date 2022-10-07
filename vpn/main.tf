@@ -21,8 +21,7 @@ resource "google_compute_address" "static" {
   name = "ipv4-address"
 }
 
-data "google_app_engine_default_service_account" "default" {
-
+data "google_compute_default_service_account" "default" {
 }
 
 resource "google_compute_instance" "vm_instance" {
