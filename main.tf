@@ -3,7 +3,7 @@ terraform {
     google = {
       source  = "hashicorp/google"
       version = "3.5.0"
-      zone    = "asia-east2-a"
+      region  = "asia-east2-a"
     }
   }
 }
