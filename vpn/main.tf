@@ -50,3 +50,27 @@ resource "google_compute_instance" "vm_instance" {
 
   # metadata_startup_script = file("~/workspace/terraform/vpn/vm_start_script.sh")
 }
+
+resource "google_compute_firewall" "http" {
+  name    = "default-allow-http"
+  network = google_compute_network.vpc_network.name
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  target_tags   = ["http-server"]
+}
+
+resource "google_compute_firewall" "https" {
+  name    = "default-allow-https"
+  network = google_compute_network.vpc_network.name
+
+  allow {
+    protocol = "tcp"
+    ports    = ["443"]
+  }
+
+  target_tags   = ["https-server"]
+}
