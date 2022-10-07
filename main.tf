@@ -3,6 +3,7 @@ terraform {
     google = {
       source  = "hashicorp/google"
       version = "3.5.0"
+      zone    = "asia-east2-a"
     }
   }
 }
@@ -21,8 +22,7 @@ resource "google_compute_address" "static" {
 
 resource "google_compute_instance" "vm_instance" {
   name         = "marko-vpn-instance"
-  machine_type = "f1-micro"
-  zone         = "us-central1-a"
+  machine_type = "e2-standard-2"
   tags         = ["http-server", "https-server"]
 
   boot_disk {
@@ -41,7 +41,7 @@ resource "google_compute_instance" "vm_instance" {
 
 resource "google_compute_firewall" "rules" {
   project     = var.project_id
-  name        = "terraform-instance-firewall-rule"
+  name        = "marko-vpn-instance-firewall-rule"
   network     = google_compute_network.vpc_network.name
   description = "Creates firewall rule targeting tagged instances"
 
