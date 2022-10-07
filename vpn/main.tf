@@ -13,10 +13,6 @@ provider "google" {
   zone    = "asia-east2-a"
 }
 
-resource "google_compute_network" "vpc_network" {
-  name = "marko-vpn-network"
-}
-
 resource "google_compute_address" "static" {
   name = "ipv4-address"
 }
@@ -36,7 +32,7 @@ resource "google_compute_instance" "vm_instance" {
   }
 
   network_interface {
-    network = google_compute_network.vpc_network.name
+    network = "default"
     access_config {
       nat_ip = google_compute_address.static.address
     }
@@ -53,7 +49,7 @@ resource "google_compute_instance" "vm_instance" {
 
 resource "google_compute_firewall" "http" {
   name    = "default-allow-http"
-  network = google_compute_network.vpc_network.name
+  network = "default"
 
   allow {
     protocol = "tcp"
@@ -65,7 +61,7 @@ resource "google_compute_firewall" "http" {
 
 resource "google_compute_firewall" "https" {
   name    = "default-allow-https"
-  network = google_compute_network.vpc_network.name
+  network = "default"
 
   allow {
     protocol = "tcp"
