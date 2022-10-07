@@ -12,11 +12,15 @@ provider "google" {
 }
 
 resource "google_compute_network" "vpc_network" {
-  name = "terraform-network"
+  name = "marko-vpn-network"
+}
+
+resource "google_compute_address" "static" {
+  name = "ipv4-address"
 }
 
 resource "google_compute_instance" "vm_instance" {
-  name         = "terraform-instance"
+  name         = "marko-vpn-instance"
   machine_type = "f1-micro"
   zone         = "us-central1-a"
   tags         = ["http-server", "https-server"]
@@ -30,6 +34,7 @@ resource "google_compute_instance" "vm_instance" {
   network_interface {
     network = google_compute_network.vpc_network.name
     access_config {
+      nat_ip = google_compute_address.static.address
     }
   }
 }
