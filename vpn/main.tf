@@ -44,7 +44,7 @@ resource "google_compute_instance" "vm_instance" {
     scopes = [ "cloud-platform" ]
   }
 
-  # metadata_startup_script = file("~/workspace/terraform/vpn/vm_start_script.sh")
+  metadata_startup_script = file("~/workspace/terraform/vpn/vm_start_script.sh")
 }
 
 resource "google_compute_firewall" "http" {
