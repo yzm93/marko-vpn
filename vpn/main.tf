@@ -44,7 +44,7 @@ resource "google_compute_instance" "vm_instance" {
 
   service_account {
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-    email  = data.google_app_engine_default_service_account.default.email
+    email  = data.google_compute_default_service_account.default.email
   }
 
   # metadata_startup_script = file("~/workspace/terraform/vpn/vm_start_script.sh")
