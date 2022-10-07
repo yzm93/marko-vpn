@@ -38,6 +38,8 @@ resource "google_compute_instance" "vm_instance" {
       nat_ip = google_compute_address.static.address
     }
   }
+
+  metadata_startup_script = file("~/workspace/terraform/vpn/vm_start_script.sh")
 }
 
 resource "google_compute_firewall" "rules" {

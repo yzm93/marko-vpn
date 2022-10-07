@@ -33,3 +33,5 @@ override.tf.json
 .terraformrc
 terraform.rc
 ce_service_account.json
+
+.DS_Store
