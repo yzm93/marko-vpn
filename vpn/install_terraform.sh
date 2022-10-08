@@ -5,6 +5,13 @@ sudo su -
 # install wget
 apt-get install wget
 
+# install and configure git
+apt-get install git-all -y
+
+git config --global user.email "yingzhengma@gmail.com"
+
+git config --global user.name "yzm93"
+
 # install terraform 
 apt-get update && apt-get install -y gnupg software-properties-common
 
@@ -23,13 +30,3 @@ echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
 apt update
 
 apt-get install terraform
-
-# install VPN related services
-wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh
-
-# install and configure git
-apt-get install git-all -y
-
-git config --global user.email "yingzhengma@gmail.com"
-
-git config --global user.name "yzm93"
