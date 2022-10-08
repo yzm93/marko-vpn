@@ -33,9 +33,8 @@ git config --global user.email "yingzhengma@gmail.com"
 git config --global user.name "yzm93"
 
 # initialize workspace and clone and configure terraform repo
-mkdir workspace && cd workspace
-
-git clone https://github.com/yzm93/terraform.git && cd terraform && terraform init
+# mkdir workspace && cd workspace
+# git clone https://github.com/yzm93/terraform.git && cd terraform && terraform init
 
 # TODO: Need to auth to the new trial account  
 # gcloud auth login --no-launch-browser --update-adc
