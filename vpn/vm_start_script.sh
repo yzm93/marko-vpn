@@ -1,10 +1,12 @@
 #!/bin/bash
 
+sudo su -
+
 # install wget
-sudo apt-get install wget
+apt-get install wget
 
 # install terraform 
-sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+apt-get update && apt-get install -y gnupg software-properties-common
 
 wget -O- https://apt.releases.hashicorp.com/gpg | \
     gpg --dearmor | \
@@ -18,15 +20,15 @@ echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
     https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
     sudo tee /etc/apt/sources.list.d/hashicorp.list
 
-sudo apt update
+apt update
 
-sudo apt-get install terraform
+apt-get install terraform
 
 # install VPN related services
-sudo su && wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh
+wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh
 
 # install and configure git
-sudo apt-get install git-all -y
+apt-get install git-all -y
 
 git config --global user.email "yingzhengma@gmail.com"
 
