@@ -23,7 +23,7 @@ sudo apt update
 sudo apt-get install terraform
 
 # install VPN related services
-wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh
+sudo su && wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh
 
 # install and configure git
 sudo apt-get install git-all -y
@@ -31,10 +31,3 @@ sudo apt-get install git-all -y
 git config --global user.email "yingzhengma@gmail.com"
 
 git config --global user.name "yzm93"
-
-# initialize workspace and clone and configure terraform repo
-# mkdir workspace && cd workspace
-# git clone https://github.com/yzm93/terraform.git && cd terraform && terraform init
-
-# TODO: Need to auth to the new trial account  
-# gcloud auth login --no-launch-browser --update-adc
