@@ -27,7 +27,7 @@ resource "google_compute_instance" "vm_instance" {
 
   boot_disk {
     initialize_params {
-      image = "debian-11-bullseye-v20220822"
+      image = "debian-11-bullseye-v20220920"
     }
   }
 
