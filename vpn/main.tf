@@ -9,8 +9,8 @@ terraform {
 
 provider "google" {
   project = var.project_id
-  region  = "asia-east2"
-  zone    = "asia-east2-a"
+  region  = "asia-northeast1"
+  zone    = "asia-northeast1-a"
 }
 
 resource "google_compute_address" "static" {
